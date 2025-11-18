@@ -24,6 +24,8 @@
     ];
   }; 
 
+  networking.firewall.allowedTCPPorts = [ 13378 ];
+
   users.users.ned = {
     isNormalUser = true;
     password = "ned";
@@ -37,6 +39,14 @@
   ];
 
   services.openssh.enable = true;
+
+  services.audiobookshelf = {
+    enable = true;
+    user = "ned";
+    host = "0.0.0.0";
+    port = 13378;
+    openFirewall = true;
+  };
 
   system.stateVersion = "25.05"; 
 }
