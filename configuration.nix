@@ -7,7 +7,10 @@
 {
   imports = [
     ./hardware-configuration.nix
+    "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
   ];
+
+  age.secrets.nas-credentials.file = ./secrets/nas-credentials.age;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -16,8 +19,7 @@
     device = "//192.168.233.240/media";
     fsType = "cifs";
     options = [
-      "username=username"
-      "password=password"
+      "credentials=${config.age.secrets.nas-credentials.path}"
       "uid=0"
       "gid=0"
       "vers=3.0"
