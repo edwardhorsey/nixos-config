@@ -28,7 +28,6 @@
 
   users.users.ned = {
     isNormalUser = true;
-    password = "ned";
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
@@ -38,7 +37,16 @@
     cifs-utils
   ];
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    hostKeys = [
+      {
+        type = "ed25519";
+        path = "/etc/ssh/ssh_host_ned_ed25519_key";
+        comment = "ned nixos audiobookshelf";
+      }
+    ];
+  };
 
   services.audiobookshelf = {
     enable = true;
