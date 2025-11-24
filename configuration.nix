@@ -7,7 +7,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
   ];
 
   age.secrets.nas-credentials.file = ./secrets/nas-credentials.age;
