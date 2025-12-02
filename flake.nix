@@ -16,5 +16,13 @@
       ];
       specialArgs = { inherit inputs; };
     };
+
+    nixosConfigurations.dasha = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hardware-configuration.nix
+        ./dasha.nix
+      ];
+    };
   };
 }
