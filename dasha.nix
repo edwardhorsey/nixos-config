@@ -34,6 +34,7 @@
     user = "ned";
     dataDir = "/home/ned";  # default location for new folders
     configDir = "/home/ned/.config/syncthing";
+    guiAddress = "0.0.0.0:8384"; 
   };
 
   networking.hostName = "dasha";
