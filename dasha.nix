@@ -32,7 +32,8 @@
   services.syncthing = {
     enable = true;
     user = "ned";
-    openDefaultPorts = true;
+    dataDir = "/home/ned";  # default location for new folders
+    configDir = "/home/ned/.config/syncthing";
   };
 
   networking.hostName = "dasha";
