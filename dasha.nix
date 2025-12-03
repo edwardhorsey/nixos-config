@@ -17,6 +17,7 @@
     vim
     wget
     git
+    lsof
   ];
 
   services.openssh = {
