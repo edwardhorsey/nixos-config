@@ -34,6 +34,7 @@
     vim
     wget
     cifs-utils
+    git
   ];
 
   services.openssh = {
