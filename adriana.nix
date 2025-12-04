@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
   ];
 
-  age.secrets.nas-credentials.file = /etc/nixos/secrets/nas-credentials.age;
+  age.secrets.nas-credentials.file = ./secrets/nas-credentials.age;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
