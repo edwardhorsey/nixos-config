@@ -7,11 +7,11 @@
   };
 
   outputs = { self, nixpkgs, agenix, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.adriana = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./hardware-configuration.nix
-        ./configuration.nix
+        ./adriana.nix
         agenix.nixosModules.default
       ];
       specialArgs = { inherit inputs; };

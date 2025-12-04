@@ -1,6 +1,18 @@
 # NixOS Config for TheNEDLab
 
+First, clone repo to your home folder under `~/nix-config`.
 
+## Rebuild
+
+```bash
+cd  ~/nix-config
+
+sudo nixos-rebuild switch --flake .#adriana
+
+# or
+
+sudo nixos-rebuild switch --flake .#dasha
+```
 
 ## Create secrets file
 

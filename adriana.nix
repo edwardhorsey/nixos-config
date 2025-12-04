@@ -23,9 +23,7 @@
       "gid=0"
       "vers=3.0"
     ];
-  }; 
-
-  networking.firewall.allowedTCPPorts = [ 13378 ];
+  };
 
   users.users.ned = {
     isNormalUser = true;
@@ -56,6 +54,10 @@
     port = 13378;
     openFirewall = true;
   };
+
+  networking.hostName = "adriana";
+
+  networking.firewall.allowedTCPPorts = [ 13378 ];
 
   system.stateVersion = "25.05"; 
 }
