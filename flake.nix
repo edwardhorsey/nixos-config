@@ -10,7 +10,6 @@
     nixosConfigurations.adriana = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hardware-configuration.nix
         ./adriana.nix
         agenix.nixosModules.default
       ];
@@ -20,7 +19,6 @@
     nixosConfigurations.dasha = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hardware-configuration.nix
         ./dasha.nix
       ];
     };

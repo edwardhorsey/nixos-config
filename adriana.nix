@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules/zsh.nix
   ];
 
   age.secrets.nas-credentials.file = ./secrets/nas-credentials.age;
