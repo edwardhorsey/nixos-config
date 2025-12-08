@@ -45,6 +45,13 @@
     guiAddress = "0.0.0.0:8384";
   };
 
+  services.uptime-kuma = {
+    enable = true;
+    settings = {
+      HOST = "0.0.0.0";
+    };
+  };
+
   virtualisation.oci-containers.containers.baikal = {
     image = "ckulka/baikal:nginx";
     ports = [ "8002:80" ];
@@ -63,6 +70,7 @@
   networking.hostName = "dasha";
 
   networking.firewall.allowedTCPPorts = [
+    3001
     8384
     22000
     21027
