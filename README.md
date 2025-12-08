@@ -29,4 +29,4 @@ Copy to the host machine
  scp ./nas-credentials.age ned@<host-ip>:/home/ned/nas-credentials.age
 ```
 
-Meh, this only copies it to my user though, so will need to ssh in and move it again to `/etc/nixos/secrets/` folder for use by `nixos-rebuild`
+Then move to `nix-config` repo in `secrets` folder
