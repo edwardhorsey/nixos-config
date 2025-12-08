@@ -45,6 +45,21 @@
     guiAddress = "0.0.0.0:8384";
   };
 
+  virtualisation.oci-containers.containers.baikal = {
+    image = "ckulka/baikal:nginx";
+    ports = [ "8002:80" ];
+    volumes = [
+      "/var/lib/container-data/baikal/config:/var/www/baikal/config"
+      "/var/lib/container-data/baikal/data:/var/www/baikal/Specific"
+    ];
+    extraOptions = [ "--name=baikal" ];
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/container-data/baikal/config 0755 root root -"
+    "d /var/lib/container-data/baikal/data 0755 root root -"
+  ];
+
   networking.hostName = "dasha";
 
   networking.firewall.allowedTCPPorts = [
