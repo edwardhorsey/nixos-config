@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -35,14 +40,18 @@
   services.syncthing = {
     enable = true;
     user = "ned";
-    dataDir = "/home/ned";  # default location for new folders
+    dataDir = "/home/ned"; # default location for new folders
     configDir = "/home/ned/.config/syncthing";
-    guiAddress = "0.0.0.0:8384"; 
+    guiAddress = "0.0.0.0:8384";
   };
 
   networking.hostName = "dasha";
 
-  networking.firewall.allowedTCPPorts = [ 8384 22000 21027 ];
+  networking.firewall.allowedTCPPorts = [
+    8384
+    22000
+    21027
+  ];
 
-  system.stateVersion = "25.05"; 
+  system.stateVersion = "25.05";
 }

@@ -6,21 +6,28 @@
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, agenix, ... }@inputs: {
-    nixosConfigurations.adriana = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./adriana.nix
-        agenix.nixosModules.default
-      ];
-      specialArgs = { inherit inputs; };
-    };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      agenix,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations.adriana = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./adriana.nix
+          agenix.nixosModules.default
+        ];
+        specialArgs = { inherit inputs; };
+      };
 
-    nixosConfigurations.dasha = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./dasha.nix
-      ];
+      nixosConfigurations.dasha = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./dasha.nix
+        ];
+      };
     };
-  };
 }
