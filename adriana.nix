@@ -20,6 +20,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  time.timeZone = "Europe/London";
+
   fileSystems."/mnt/jas" = {
     device = "//192.168.233.240/media";
     fsType = "cifs";
@@ -62,9 +64,9 @@
     openFirewall = true;
   };
 
-  networking.hostName = "adriana";
-
   networking.firewall.allowedTCPPorts = [ 13378 ];
+
+  networking.hostName = "adriana";
 
   system.stateVersion = "25.05";
 }

@@ -14,6 +14,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  time.timeZone = "Europe/London";
+
   users.users.ned = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
@@ -62,12 +64,29 @@
     extraOptions = [ "--name=baikal" ];
   };
 
+  virtualisation.oci-containers.containers.gitea = {
+    image = "gitea/gitea:latest";
+    ports = [
+      "3000:3000"
+      "222:22"
+    ];
+    volumes = [
+      "/var/lib/container-data/gitea/data:/data"
+      "/etc/timezone:/etc/timezone:ro"
+      "/etc/localtime:/etc/localtime:ro"
+    ];
+    environment = {
+      USER_UID = "1000";
+      USER_GID = "1000";
+    };
+  };
+
+  # Will throw if the dirs don't exist
   systemd.tmpfiles.rules = [
     "d /var/lib/container-data/baikal/config 0755 root root -"
     "d /var/lib/container-data/baikal/data 0755 root root -"
+    "d /var/lib/container-data/gitea/data 0755 root root -"
   ];
-
-  networking.hostName = "dasha";
 
   networking.firewall.allowedTCPPorts = [
     3001
@@ -75,6 +94,8 @@
     22000
     21027
   ];
+
+  networking.hostName = "dasha";
 
   system.stateVersion = "25.05";
 }
