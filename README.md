@@ -12,6 +12,10 @@ sudo nixos-rebuild switch --flake .#adriana
 # or
 
 sudo nixos-rebuild switch --flake .#dasha
+
+# or
+
+sudo nixos-rebuild switch --flake .#oscar
 ```
 
 ## Create secrets file

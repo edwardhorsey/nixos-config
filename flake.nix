@@ -29,5 +29,12 @@
           ./dasha.nix
         ];
       };
+
+      nixosConfigurations.oscar = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./oscar.nix
+        ];
+      };
     };
 }
