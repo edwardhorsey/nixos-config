@@ -37,6 +37,15 @@
     ];
   };
 
+  services.openvpn.servers.proton = {
+    autoStart = true;
+    updateResolvConf = true;
+    config = ''
+      config /root/nixos/openvpn/proton.ovpn
+      auth-user-pass /root/nixos/openvpn/proton-auth.txt
+    '';
+  };
+
   networking.hostName = "oscar";
 
   system.stateVersion = "25.05";
