@@ -19,7 +19,25 @@
     extraGroups = [ "wheel" ];
   };
 
-  networking.hostName = "oscarnix";
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    cifs-utils
+    git
+  ];
+
+  services.openssh = {
+    enable = true;
+    hostKeys = [
+      {
+        type = "ed25519";
+        path = "/etc/ssh/ssh_host_ned_ed25519_key";
+        comment = "ned nixos oscar";
+      }
+    ];
+  };
+
+  networking.hostName = "oscar";
 
   system.stateVersion = "25.05";
 }
