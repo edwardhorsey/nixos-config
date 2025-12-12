@@ -46,6 +46,41 @@
     '';
   };
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 ]; # ssh
+    allowedUDPPorts = [
+      53
+      1194
+    ]; # dns and openvpn
+
+    extraCommands = ''
+      PHYS_IF="ens18"
+
+      VPN_SERVER_RANGES=(
+        "79.127.145.0/24" 
+      )
+
+      LOCAL_NET="192.168.233.0/24"
+
+      # local network traffic
+      iptables -A INPUT -s "$LOCAL_NET" -j ACCEPT
+      iptables -A OUTPUT -d "$LOCAL_NET" -j ACCEPT
+
+      # traffic to/from ProtonVPN servers
+      for range in "''${VPN_SERVER_RANGES[@]}"; do
+        iptables -A INPUT -s "$range" -i "$PHYS_IF" -j ACCEPT
+        iptables -A OUTPUT -d "$range" -o "$PHYS_IF" -j ACCEPT
+      done
+
+      # block all other traffic
+      iptables -A INPUT -i "$PHYS_IF" -j REJECT
+      ip6tables -A INPUT -i "$PHYS_IF" -j REJECT
+      iptables -A OUTPUT -o "$PHYS_IF" -j REJECT
+      ip6tables -A OUTPUT -o "$PHYS_IF" -j REJECT
+    '';
+  };
+
   networking.hostName = "oscar";
 
   system.stateVersion = "25.05";
