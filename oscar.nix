@@ -19,8 +19,7 @@
     extraGroups = [ "wheel" ];
   };
 
-  networking.hostName = "oscar";
+  networking.hostName = "oscarnix";
 
   system.stateVersion = "25.05";
 }
-
