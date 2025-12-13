@@ -11,8 +11,23 @@
     ./modules/zsh.nix
   ];
 
+  age.secrets.oscar-nas-credentials.file = ./secrets/oscar-nas-credentials.age;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  time.timeZone = "Europe/London";
+
+  fileSystems."/mnt/jas" = {
+    device = "//192.168.233.240/media";
+    fsType = "cifs";
+    options = [
+      "credentials=${config.age.secrets.oscar-nas-credentials.path}"
+      "uid=0"
+      "gid=0"
+      "vers=3.0"
+    ];
+  };
 
   users.users.ned = {
     isNormalUser = true;

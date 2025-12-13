@@ -34,6 +34,7 @@
         system = "x86_64-linux";
         modules = [
           ./oscar.nix
+          agenix.nixosModules.default
         ];
       };
     };
