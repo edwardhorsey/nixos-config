@@ -41,6 +41,16 @@
     git
   ];
 
+  services.sabnzbd = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.prowlarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.openssh = {
     enable = true;
     hostKeys = [
