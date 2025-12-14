@@ -16,6 +16,7 @@
   ];
 
   age.secrets.nas-credentials.file = ./secrets/nas-credentials.age;
+  age.secrets.nas-photos-credentials.file = ./secrets/nas-photos-credentials.age;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -27,8 +28,19 @@
     fsType = "cifs";
     options = [
       "credentials=${config.age.secrets.nas-credentials.path}"
-      "uid=0"
-      "gid=0"
+      "uid=1000"
+      "gid=100"
+      "vers=3.0"
+    ];
+  };
+
+  fileSystems."/mnt/photos" = {
+    device = "//192.168.233.200/ned-store";
+    fsType = "cifs";
+    options = [
+      "credentials=${config.age.secrets.nas-photos-credentials.path}"
+      "uid=1000"
+      "gid=100"
       "vers=3.0"
     ];
   };
@@ -51,7 +63,7 @@
       {
         type = "ed25519";
         path = "/etc/ssh/ssh_host_ned_ed25519_key";
-        comment = "ned nixos audiobookshelf";
+        comment = "ned@adriana";
       }
     ];
   };

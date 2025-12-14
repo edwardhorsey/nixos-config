@@ -57,6 +57,15 @@
     openFirewall = true;
   };
 
+  services.pinchflat = {
+    enable = true;
+    user = "ned";
+    group = "users";
+    openFirewall = true;
+    mediaDir = "/mnt/jas/pinchflat/downloads";
+    selfhosted = true;
+  };
+
   services.openssh = {
     enable = true;
     hostKeys = [
