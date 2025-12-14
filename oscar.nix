@@ -25,13 +25,15 @@
     fsType = "cifs";
     options = [
       "credentials=${config.age.secrets.oscar-nas-credentials.path}"
-      "uid=0"
-      "gid=0"
+      "uid=1000"
+      "gid=100"
       "vers=3.0"
     ];
   };
 
   users.users.ned = {
+    uid = 1000;
+    group = "users";
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
@@ -45,6 +47,8 @@
 
   services.sabnzbd = {
     enable = true;
+    user = "ned";
+    group = "users";
     openFirewall = true;
   };
 
@@ -85,7 +89,7 @@
       PHYS_IF="ens18"
 
       VPN_SERVER_RANGES=(
-        "79.127.145.0/24" 
+        "79.127.145.0/24"
       )
 
       LOCAL_NET="192.168.233.0/24"
