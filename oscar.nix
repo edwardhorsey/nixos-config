@@ -11,6 +11,8 @@
     ./modules/zsh.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   age.secrets.oscar-nas-credentials.file = ./secrets/oscar-nas-credentials.age;
 
   boot.loader.systemd-boot.enable = true;
