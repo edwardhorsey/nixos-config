@@ -76,6 +76,12 @@
     openFirewall = true;
   };
 
+  services.immich = {
+    enable = true;
+    port = 2283;
+    openFirewall = true;
+  };
+
   networking.firewall.allowedTCPPorts = [ 13378 ];
 
   networking.hostName = "adriana";
