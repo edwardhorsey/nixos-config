@@ -3,15 +3,15 @@ let
   oscar = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwcElnf3G0KA6mLuhPg2iyUWLKv5UT+xEgDy6b9aRdH";
 in
 {
-  "nas-credentials.age" = {
+  "adriana-media-credentials.age" = {
     publicKeys = [ adriana ];
     armor = true;
   };
-  "nas-photos-credentials.age" = {
+  "adriana-photos-credentials.age" = {
     publicKeys = [ adriana ];
     armor = true;
   };
-  "oscar-nas-credentials.age" = {
+  "oscar-media-credentials.age" = {
     publicKeys = [ oscar ];
     armor = true;
   };

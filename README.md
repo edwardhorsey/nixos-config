@@ -20,11 +20,13 @@ sudo nixos-rebuild switch --flake .#oscar
 
 ## Create secrets file
 
+Add new entry in `secrets.nix`
+
 ```bash
 EDITOR=vim nix --extra-experimental-features 'nix-command flakes' run github:ryantm/agenix -- -e nas-credentials.age
 ```
 
-Then enter the credentials file info in vim in terminal, this will create `nas-credentials.age`
+Then enter the credentials info in vim in terminal, this will create `nas-credentials.age`
 
 Copy to the host machine 
 

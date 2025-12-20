@@ -13,7 +13,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  age.secrets.oscar-nas-credentials.file = ./secrets/oscar-nas-credentials.age;
+  age.secrets.oscar-media-credentials.file = ./secrets/oscar-media-credentials.age;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -24,7 +24,7 @@
     device = "//192.168.233.240/media";
     fsType = "cifs";
     options = [
-      "credentials=${config.age.secrets.oscar-nas-credentials.path}"
+      "credentials=${config.age.secrets.oscar-media-credentials.path}"
       "uid=1000"
       "gid=100"
       "vers=3.0"
