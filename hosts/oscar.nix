@@ -8,12 +8,12 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/zsh.nix
+    ../modules/zsh.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
 
-  age.secrets.oscar-media-credentials.file = ./secrets/oscar-media-credentials.age;
+  age.secrets.oscar-media-credentials.file = ../secrets/oscar-media-credentials.age;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

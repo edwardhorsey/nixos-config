@@ -8,7 +8,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/zsh.nix
+    ../modules/zsh.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

@@ -12,11 +12,11 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/zsh.nix
+    ../modules/zsh.nix
   ];
 
-  age.secrets.adriana-media-credentials.file = ./secrets/adriana-media-credentials.age;
-  age.secrets.adriana-photos-credentials.file = ./secrets/adriana-photos-credentials.age;
+  age.secrets.adriana-media-credentials.file = ../secrets/adriana-media-credentials.age;
+  age.secrets.adriana-photos-credentials.file = ../secrets/adriana-photos-credentials.age;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
