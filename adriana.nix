@@ -47,7 +47,7 @@
 
   users.users.ned = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ]; # Enable sudo for the user.
   };
 
   environment.systemPackages = with pkgs; [
