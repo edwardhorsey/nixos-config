@@ -12,6 +12,7 @@ This repo contains the configuration for various VMs running on my Proxmox clust
 |Icon|Name|Description|Category|
 |---|---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/png/baikal.png' width=32 height=32>|Baikal|CalDAV and CardDAV server|Services|
+|<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/gitea.svg' width=32 height=32>|Gitea|Self hosted Git service|Services|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/syncthing.svg' width=32 height=32>|Syncthing|Open Source Continuous File Synchronization|Services|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/uptime-kuma.svg' width=32 height=32>|Uptime Kuma|Service monitoring tool|Services|
 
