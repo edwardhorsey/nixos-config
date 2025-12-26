@@ -13,6 +13,8 @@
       ll = "ls -la";
       localip = "ip -4 addr show | awk '/inet / {print $2}' | cut -d/ -f1";
       publicip = "curl ifconfig.co/json";
+      gp = "git pull";
+      gs = "git status";
     };
     promptInit = ''
       PROMPT="%F{blue}%n%f@%F{blue}%m%f %F{cyan}%~%f "
