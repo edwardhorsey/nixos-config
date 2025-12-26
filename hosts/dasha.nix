@@ -25,7 +25,6 @@
     vim
     wget
     git
-    lsof
   ];
 
   services.openssh = {
@@ -51,6 +50,7 @@
     enable = true;
     settings = {
       HOST = "0.0.0.0";
+      PORT = "3001";
     };
   };
 
@@ -89,8 +89,12 @@
   ];
 
   networking.firewall.allowedTCPPorts = [
-    3001
+    3001 # uptime kuma
     8384
+    22000
+  ];
+
+  networking.firewall.allowedUDPPorts = [
     22000
     21027
   ];

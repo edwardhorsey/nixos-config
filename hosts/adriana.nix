@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 {
   config,
   lib,
@@ -22,6 +18,18 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   time.timeZone = "Europe/London";
+
+  users.users.ned = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable sudo for the user.
+  };
+
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    git
+    cifs-utils
+  ];
 
   fileSystems."/mnt/jas" = {
     device = "//192.168.233.240/media";
@@ -44,18 +52,6 @@
       "vers=3.0"
     ];
   };
-
-  users.users.ned = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable sudo for the user.
-  };
-
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    cifs-utils
-    git
-  ];
 
   services.openssh = {
     enable = true;
@@ -81,8 +77,6 @@
     port = 2283;
     openFirewall = true;
   };
-
-  networking.firewall.allowedTCPPorts = [ 13378 ];
 
   networking.hostName = "adriana";
 

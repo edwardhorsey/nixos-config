@@ -11,14 +11,24 @@
     ../modules/zsh.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
   age.secrets.oscar-media-credentials.file = ../secrets/oscar-media-credentials.age;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   time.timeZone = "Europe/London";
+
+  users.users.ned = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    git
+    cifs-utils
+  ];
 
   fileSystems."/mnt/jas" = {
     device = "//192.168.233.240/media";
@@ -31,19 +41,7 @@
     ];
   };
 
-  users.users.ned = {
-    uid = 1000;
-    group = "users";
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
-
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    cifs-utils
-    git
-  ];
+  nixpkgs.config.allowUnfree = true;
 
   services.sabnzbd = {
     enable = true;
