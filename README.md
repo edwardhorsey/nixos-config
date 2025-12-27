@@ -16,6 +16,12 @@ This repo contains the configuration for various VMs running on my Proxmox clust
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/syncthing.svg' width=32 height=32>|Syncthing|Open Source Continuous File Synchronization|Services|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/uptime-kuma.svg' width=32 height=32>|Uptime Kuma|Service monitoring tool|Services|
 
+### marcel
+|Icon|Name|Description|Category|
+|---|---|---|---|
+|<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/caddy.svg' width=32 height=32>|Caddy|Web server with automatic HTTPS|Services|
+|<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/tailscale.svg' width=32 height=32>|Tailscale|Zero-config VPN mesh network|Networking|
+
 ### oscar
 |Icon|Name|Description|Category|
 |---|---|---|---|
@@ -28,7 +34,7 @@ This repo contains the configuration for various VMs running on my Proxmox clust
 
 First, clone the repo to your home folder under `~/nix-config`.
 
-## Rebuild
+### Rebuild
 
 ```bash
 cd  ~/nix-config
@@ -48,7 +54,7 @@ sudo nixos-rebuild switch --flake .#marcel
 sudo nixos-rebuild switch --flake .#oscar
 ```
 
-## Create secrets file
+### Create secrets file
 
 Add a new entry in `secrets.nix`.
 
@@ -67,8 +73,10 @@ scp ./nas-credentials.age ned@<host-ip>:/home/ned/nas-credentials.age
 
 Then move it to `~/nix-config/secrets`.
 
+
 ## Links
 
  - [Adriana Lopez](https://soundcloud.com/adrianalopez)
  - [Dasha Rush](https://soundcloud.com/dasha-rush)
+ - [Marcel Dettmann](https://soundcloud.com/marceldettmann)
  - [Oscar Mulero](https://soundcloud.com/oscarmulero)

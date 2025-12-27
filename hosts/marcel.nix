@@ -51,12 +51,14 @@
       "443:443/udp"
     ];
     volumes = [
+      "caddy-data:/data"
+      "caddy-config:/config"
       "/var/lib/container-data/caddy/Caddyfile:/etc/caddy/Caddyfile"
+
     ];
     extraOptions = [
       "--name=caddy"
       "--cap-add=NET_ADMIN"
-      "--restart=unless-stopped"
     ];
   };
 
