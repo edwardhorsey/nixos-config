@@ -30,6 +30,13 @@
         ];
       };
 
+      nixosConfigurations.marcel = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/marcel.nix
+        ];
+      };
+
       nixosConfigurations.oscar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

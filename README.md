@@ -41,6 +41,10 @@ sudo nixos-rebuild switch --flake .#dasha
 
 # or
 
+sudo nixos-rebuild switch --flake .#marcel
+
+# or 
+
 sudo nixos-rebuild switch --flake .#oscar
 ```
 
