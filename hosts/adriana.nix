@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ../modules/zsh.nix
+    ../modules/ned-user.nix
   ];
 
   age.secrets.adriana-media-credentials.file = ../secrets/adriana-media-credentials.age;
@@ -16,13 +17,9 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  networking.hostName = "adriana";
 
   time.timeZone = "Europe/London";
-
-  users.users.ned = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable sudo for the user.
-  };
 
   environment.systemPackages = with pkgs; [
     vim
@@ -77,8 +74,6 @@
     port = 2283;
     openFirewall = true;
   };
-
-  networking.hostName = "adriana";
 
   system.stateVersion = "25.05";
 }

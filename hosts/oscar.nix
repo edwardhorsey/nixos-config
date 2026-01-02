@@ -9,19 +9,16 @@
   imports = [
     ./hardware-configuration.nix
     ../modules/zsh.nix
+    ../modules/ned-user.nix
   ];
 
   age.secrets.oscar-media-credentials.file = ../secrets/oscar-media-credentials.age;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  networking.hostName = "oscar";
 
   time.timeZone = "Europe/London";
-
-  users.users.ned = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
 
   environment.systemPackages = with pkgs; [
     vim
@@ -118,8 +115,6 @@
       ip6tables -A OUTPUT -o "$PHYS_IF" -j REJECT
     '';
   };
-
-  networking.hostName = "oscar";
 
   system.stateVersion = "25.05";
 }

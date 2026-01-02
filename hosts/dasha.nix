@@ -9,17 +9,14 @@
   imports = [
     ./hardware-configuration.nix
     ../modules/zsh.nix
+    ../modules/ned-user.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  networking.hostName = "dasha";
 
   time.timeZone = "Europe/London";
-
-  users.users.ned = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable sudo for the user.
-  };
 
   environment.systemPackages = with pkgs; [
     vim
@@ -98,8 +95,6 @@
     22000
     21027
   ];
-
-  networking.hostName = "dasha";
 
   system.stateVersion = "25.05";
 }

@@ -9,17 +9,14 @@
   imports = [
     ./hardware-configuration.nix
     ../modules/zsh.nix
+    ../modules/ned-user.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  networking.hostName = "marcel";
 
   time.timeZone = "Europe/London";
-
-  users.users.ned = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable sudo for the user.
-  };
 
   environment.systemPackages = with pkgs; [
     vim
@@ -72,8 +69,6 @@
     443
   ];
   networking.firewall.allowedUDPPorts = [ 443 ];
-
-  networking.hostName = "marcel";
 
   system.stateVersion = "25.05";
 }
