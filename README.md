@@ -32,7 +32,9 @@ This repo contains the configuration for various VMs running on my Proxmox clust
 
 ## How it works
 
-First, clone the repo to your home folder under `~/nix-config`.
+> See [Create a NixOS VM on Proxmox](https://www.edwardhorsey.dev/blog/create-a-nixos-vm-on-proxmox/) to get setup.
+
+Clone the repo to your home folder under `~/nix-config`.
 
 ### Rebuild
 
