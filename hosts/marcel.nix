@@ -50,8 +50,7 @@
     volumes = [
       "caddy-data:/data"
       "caddy-config:/config"
-      "/var/lib/container-data/caddy/Caddyfile:/etc/caddy/Caddyfile"
-
+      "/var/lib/container-data/caddy:/etc/caddy"
     ];
     extraOptions = [
       "--name=caddy"
