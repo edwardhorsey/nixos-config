@@ -25,6 +25,7 @@
     wget
     git
     cifs-utils
+    duf
   ];
 
   fileSystems."/mnt/jas" = {

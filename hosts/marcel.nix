@@ -22,6 +22,7 @@
     vim
     wget
     git
+    duf
   ];
 
   services.openssh = {
