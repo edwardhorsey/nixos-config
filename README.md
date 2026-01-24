@@ -67,15 +67,15 @@ EDITOR=vim nix --extra-experimental-features 'nix-command flakes' run github:rya
 
 Then enter the credentials information in Vim in the terminal. This will create `nas-credentials.age`.
 
-Copy to the host machine:
+### Useful commands
 
 ```bash
-# replace <host-ip>
-scp ./nas-credentials.age ned@<host-ip>:/home/ned/nas-credentials.age
+# Update flake
+sudo nix --extra-experimental-features 'nix-command flakes' flake update
+
+# Remove old packages and installations
+nix-collect-garbage
 ```
-
-Then move it to `~/nix-config/secrets`.
-
 
 ## Links
 
