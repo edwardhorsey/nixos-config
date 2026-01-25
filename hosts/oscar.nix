@@ -46,6 +46,12 @@
     user = "ned";
     group = "users";
     openFirewall = true;
+    allowConfigWrite = true;
+    settings = {
+      misc = {
+        host = "0.0.0.0";
+      };
+    };
   };
 
   services.prowlarr = {
