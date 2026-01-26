@@ -62,6 +62,35 @@
     extraOptions = [ "--name=baikal" ];
   };
 
+
+  systemd.services.baikal-backup = {
+    description = "Backup Baikal config and data to /home/ned/baikal-backups";
+    serviceConfig = {
+      Type = "oneshot";
+      User = "ned";
+    };
+    path = [ pkgs.zip pkgs.coreutils pkgs.findutils ];
+    script = ''
+      set -euo pipefail
+      BACKUP_DIR="/home/ned/baikal-backups"
+      CONFIG_DIR="/var/lib/container-data/baikal/config"
+      DATA_DIR="/var/lib/container-data/baikal/data"
+      DATE=$(date +%Y-%m-%d-%H%M%S)
+      mkdir -p "''$BACKUP_DIR"
+      ${pkgs.zip}/bin/zip -r "''$BACKUP_DIR/baikal-backup-''$DATE.zip" "''$CONFIG_DIR" "''$DATA_DIR"
+      find "''$BACKUP_DIR" -name "baikal-backup-*.zip" -mtime +21 -delete
+    '';
+  };
+
+  systemd.timers.baikal-backup = {
+    description = "Run Baikal backup daily at 2am";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 21:00:00";
+      Persistent = true;
+    };
+  };
+
   virtualisation.oci-containers.containers.gitea = {
     image = "gitea/gitea:latest";
     ports = [
