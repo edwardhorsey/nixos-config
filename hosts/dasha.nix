@@ -25,6 +25,8 @@
     duf
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   services.openssh = {
     enable = true;
     hostKeys = [
@@ -50,6 +52,13 @@
       HOST = "0.0.0.0";
       PORT = "3001";
     };
+  };
+
+  services.open-webui = {
+    enable = true;
+    host = "0.0.0.0";
+    port = 8080;
+    openFirewall = true;
   };
 
   virtualisation.oci-containers.containers.baikal = {
