@@ -13,6 +13,11 @@
   ];
 
   age.secrets.oscar-media-credentials.file = ../secrets/oscar-media-credentials.age;
+  age.secrets."oscar-sabnzbd-config" = {
+    file = ../secrets/oscar-sabnzbd-config.age;
+    owner = "ned";
+    mode = "0400";
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -46,10 +51,24 @@
     user = "ned";
     group = "users";
     openFirewall = true;
-    allowConfigWrite = true;
+    secretFiles = [
+      config.age.secrets."oscar-sabnzbd-config".path
+    ];
     settings = {
       misc = {
         host = "0.0.0.0";
+      };
+      servers."eweka" = {
+        enable = true;
+        host = "news.eweka.nl";
+        displayname = "Eweka";
+        name = "Eweka";
+      };
+      servers."bulknews" = {
+        enable = true;
+        host = "news.bulknews.eu";
+        displayname = "Bulknews";
+        name = "Bulknews";
       };
     };
   };

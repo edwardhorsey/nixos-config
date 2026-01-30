@@ -71,14 +71,17 @@
     extraOptions = [ "--name=baikal" ];
   };
 
-
   systemd.services.baikal-backup = {
     description = "Backup Baikal config and data to /home/ned/baikal-backups";
     serviceConfig = {
       Type = "oneshot";
       User = "ned";
     };
-    path = [ pkgs.zip pkgs.coreutils pkgs.findutils ];
+    path = [
+      pkgs.zip
+      pkgs.coreutils
+      pkgs.findutils
+    ];
     script = ''
       set -euo pipefail
       BACKUP_DIR="/home/ned/baikal-backups"

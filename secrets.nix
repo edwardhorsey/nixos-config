@@ -15,4 +15,8 @@ in
     publicKeys = [ oscar ];
     armor = true;
   };
+  "oscar-sabnzbd-config.age" = {
+    publicKeys = [ oscar ];
+    armor = true;
+  };
 }
