@@ -17,10 +17,6 @@ This repo contains the configuration for various VMs running on my Proxmox clust
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/netalertx.svg' width=32 height=32>|NetAlert X|Self hosted network monitoring|Services|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/syncthing.svg' width=32 height=32>|Syncthing|Open source continuous file synchronization|Services|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/uptime-kuma.svg' width=32 height=32>|Uptime Kuma|Service monitoring tool|Services|
-
-### marcel
-|Icon|Name|Description|Category|
-|---|---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/caddy.svg' width=32 height=32>|Caddy|Web server with automatic HTTPS|Services|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/tailscale.svg' width=32 height=32>|Tailscale|Zero-config VPN mesh network|Networking|
 
@@ -51,10 +47,6 @@ sudo nixos-rebuild switch --flake .#dasha
 
 # or
 
-sudo nixos-rebuild switch --flake .#marcel
-
-# or 
-
 sudo nixos-rebuild switch --flake .#oscar
 ```
 
@@ -82,5 +74,4 @@ nix-collect-garbage
 
  - [Adriana Lopez](https://soundcloud.com/adrianalopez)
  - [Dasha Rush](https://soundcloud.com/dasha-rush)
- - [Marcel Dettmann](https://soundcloud.com/marceldettmann)
  - [Oscar Mulero](https://soundcloud.com/oscarmulero)

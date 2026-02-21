@@ -40,6 +40,11 @@
     ];
   };
 
+  services.tailscale = {
+    enable = true;
+    extraDaemonFlags = [ "--no-logs-no-support" ];
+  };
+
   services.syncthing = {
     enable = true;
     user = "ned";
@@ -152,14 +157,36 @@
     ];
   };
 
+  virtualisation.oci-containers.containers.caddy = {
+    image = "serfriz/caddy-namecheap:latest";
+    ports = [
+      "80:80"
+      "443:443"
+      "443:443/udp"
+    ];
+    volumes = [
+      "caddy-data:/data"
+      "caddy-config:/config"
+      "/var/lib/container-data/caddy:/etc/caddy"
+    ];
+    extraOptions = [
+      "--name=caddy"
+      "--cap-add=NET_ADMIN"
+    ];
+  };
+
   # Will throw if the dirs don't exist
   systemd.tmpfiles.rules = [
+    "d /var/lib/container-data/caddy 0755 root root -"
+    "f /var/lib/container-data/caddy/Caddyfile 0644 root root -"
     "d /var/lib/container-data/baikal/config 0755 root root -"
     "d /var/lib/container-data/baikal/data 0755 root root -"
     "d /var/lib/container-data/gitea/data 0755 root root -"
   ];
 
   networking.firewall.allowedTCPPorts = [
+    80
+    443
     3001 # uptime kuma
     8384
     22000
@@ -168,6 +195,7 @@
   ];
 
   networking.firewall.allowedUDPPorts = [
+    443
     22000
     21027
   ];
