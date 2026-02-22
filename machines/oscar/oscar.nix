@@ -8,13 +8,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../modules/zsh.nix
-    ../modules/ned-user.nix
+    ../../modules/zsh.nix
+    ../../modules/ned-user.nix
   ];
 
-  age.secrets.oscar-media-credentials.file = ../secrets/oscar-media-credentials.age;
+  age.secrets.oscar-media-credentials.file = ../../secrets/oscar-media-credentials.age;
   age.secrets."oscar-sabnzbd-config" = {
-    file = ../secrets/oscar-sabnzbd-config.age;
+    file = ../../secrets/oscar-sabnzbd-config.age;
     owner = "ned";
     mode = "0400";
   };

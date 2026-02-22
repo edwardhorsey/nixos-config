@@ -18,7 +18,7 @@
       nixosConfigurations.adriana = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/adriana.nix
+          ./machines/adriana/adriana.nix
           agenix.nixosModules.default
         ];
         specialArgs = { inherit inputs; };
@@ -27,7 +27,7 @@
       nixosConfigurations.dasha = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/dasha.nix
+          ./machines/dasha/dasha.nix
         ];
         specialArgs = {
           inherit inputs;
@@ -41,7 +41,7 @@
       nixosConfigurations.oscar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/oscar.nix
+          ./machines/oscar/oscar.nix
           agenix.nixosModules.default
         ];
       };
