@@ -2,8 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
-  openwebui-pkgs,
   ...
 }:
 
@@ -66,7 +64,6 @@
     host = "0.0.0.0";
     port = 8080;
     openFirewall = true;
-    package = openwebui-pkgs.open-webui;
   };
 
   virtualisation.oci-containers.containers.baikal = {
