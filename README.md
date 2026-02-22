@@ -1,6 +1,16 @@
-# NixOS Config for the Homelab
+# NixOS Config
 
-This repo contains the configuration for various VMs running on my Proxmox cluster. Each VM is named after a favorite DJ (list below).
+This repo contains the configuration for various machines.
+
+## Devices
+
+### t14
+
+Lenovo Thinkpad T14 Gen 2 i5 11th 16GB. Traveling laptop.
+
+## VMs
+
+Running in a Proxmox cluster, each named after a favorite DJ (see below)
 
 ### adriana
 |Icon|Name|Description|Category|
@@ -30,7 +40,7 @@ This repo contains the configuration for various VMs running on my Proxmox clust
 
 ## How it works
 
-> See [Create a NixOS VM on Proxmox](https://www.edwardhorsey.dev/blog/create-a-nixos-vm-on-proxmox/) to get setup.
+See [Create a NixOS VM on Proxmox](https://www.edwardhorsey.dev/blog/create-a-nixos-vm-on-proxmox/) post.
 
 Clone the repo to your home folder under `~/nix-config`.
 
