@@ -58,6 +58,7 @@
     plexamp
     obsidian
     nixfmt
+    signal-desktop
   ];
 
   # Enable the OpenSSH daemon.
