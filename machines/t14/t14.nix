@@ -1,11 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/zsh.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/zsh.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -13,7 +12,7 @@
   boot.supportedFilesystems = [ "bcachefs" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "t14"; 
+  networking.hostName = "t14";
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -24,20 +23,14 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  services.displayManager.cosmic-greeter = {
-    enable = true;
-  };
+  services.displayManager.cosmic-greeter = { enable = true; };
 
-  services.desktopManager.cosmic = {
-    enable = true;
-  };
+  services.desktopManager.cosmic = { enable = true; };
 
   users.users.ned = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      tree
-    ];
+    packages = with pkgs; [ tree ];
   };
 
   programs.firefox.enable = true;
@@ -70,18 +63,14 @@
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    hostKeys = [
-      {
-        comment = "ned-t14";
-        path = "etc/ssh/ned-t14_key";
-        type = "ed25519";
-      }
-    ];
+    hostKeys = [{
+      comment = "ned-t14";
+      path = "etc/ssh/ned-t14_key";
+      type = "ed25519";
+    }];
   };
 
-  services.tailscale = {
-    enable = true;
-  };
+  services.tailscale = { enable = true; };
 
   services.syncthing = {
     enable = true;

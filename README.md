@@ -78,6 +78,9 @@ sudo nix --extra-experimental-features 'nix-command flakes' flake update
 
 # Remove old packages and installations
 nix-collect-garbage
+
+# Formatter
+find . -name '*.nix' -exec nixfmt -- {} +
 ```
 
 ## Links

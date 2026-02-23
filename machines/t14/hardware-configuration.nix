@@ -4,31 +4,30 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" "cryptd"];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" "cryptd" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NIXOS-ENCRYPTED";
+  boot.initrd.luks.devices."cryptroot".device =
+    "/dev/disk/by-label/NIXOS-ENCRYPTED";
 
-  fileSystems."/" =
-    { device = "UUID=80885891-b708-42b6-aaf1-a045ec4bdeb2";
-      fsType = "bcachefs";
-    };
+  fileSystems."/" = {
+    device = "UUID=80885891-b708-42b6-aaf1-a045ec4bdeb2";
+    fsType = "bcachefs";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3498-5D0F";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/3498-5D0F";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/0690ef9b-ac1d-4b97-8320-e897dfceb29e"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/0690ef9b-ac1d-4b97-8320-e897dfceb29e"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -39,5 +38,6 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
