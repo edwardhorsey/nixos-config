@@ -3,7 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/base.nix
     ../../modules/zsh.nix
+    ../../modules/ned-user.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -15,9 +17,6 @@
   networking.hostName = "t14";
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/London";
-
   nixpkgs.config.allowUnfree = true;
 
   # Enable CUPS to print documents.
@@ -26,12 +25,6 @@
   services.displayManager.cosmic-greeter = { enable = true; };
 
   services.desktopManager.cosmic = { enable = true; };
-
-  users.users.ned = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    packages = with pkgs; [ tree ];
-  };
 
   programs.firefox.enable = true;
   programs._1password.enable = true;
@@ -47,13 +40,8 @@
   };
   programs.thunderbird.enable = true;
 
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    vim
-    wget
     cifs-utils
-    duf
     vscode
     plexamp
     obsidian
@@ -86,5 +74,4 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "25.05";
 }

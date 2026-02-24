@@ -8,6 +8,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/base.nix
     ../../modules/zsh.nix
     ../../modules/ned-user.nix
   ];
@@ -23,14 +24,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "oscar";
 
-  time.timeZone = "Europe/London";
-
   environment.systemPackages = with pkgs; [
-    vim
-    wget
-    git
     cifs-utils
-    duf
   ];
 
   fileSystems."/mnt/jas" = {
@@ -142,5 +137,4 @@
     '';
   };
 
-  system.stateVersion = "25.05";
 }

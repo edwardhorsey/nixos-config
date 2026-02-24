@@ -8,6 +8,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/base.nix
     ../../modules/zsh.nix
     ../../modules/ned-user.nix
   ];
@@ -15,15 +16,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "dasha";
-
-  time.timeZone = "Europe/London";
-
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    git
-    duf
-  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -197,5 +189,4 @@
     21027
   ];
 
-  system.stateVersion = "25.05";
 }
