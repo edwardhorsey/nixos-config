@@ -47,6 +47,8 @@
     obsidian
     nixfmt
     signal-desktop
+    kdePackages.krdc
+    flameshot
   ];
 
   # Enable the OpenSSH daemon.
