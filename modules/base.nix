@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Common settings shared by all hosts
@@ -7,8 +12,11 @@
   services.openssh.enable = true;
 
   system.stateVersion = "25.05";
-  
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Small, stable set of base CLI tools
   environment.systemPackages = with pkgs; [

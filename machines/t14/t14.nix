@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -22,9 +27,13 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  services.displayManager.cosmic-greeter = { enable = true; };
+  services.displayManager.cosmic-greeter = {
+    enable = true;
+  };
 
-  services.desktopManager.cosmic = { enable = true; };
+  services.desktopManager.cosmic = {
+    enable = true;
+  };
 
   programs.firefox.enable = true;
   programs._1password.enable = true;
@@ -54,14 +63,18 @@
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    hostKeys = [{
-      comment = "ned-t14";
-      path = "etc/ssh/ned-t14_key";
-      type = "ed25519";
-    }];
+    hostKeys = [
+      {
+        comment = "ned-t14";
+        path = "etc/ssh/ned-t14_key";
+        type = "ed25519";
+      }
+    ];
   };
 
-  services.tailscale = { enable = true; };
+  services.tailscale = {
+    enable = true;
+  };
 
   services.syncthing = {
     enable = true;
