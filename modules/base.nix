@@ -19,4 +19,6 @@
     tree
     git
   ];
+
+  programs.mtr.enable = true;
 }
