@@ -7,10 +7,6 @@ in
     publicKeys = [ adriana ];
     armor = true;
   };
-  "adriana-photos-credentials.age" = {
-    publicKeys = [ adriana ];
-    armor = true;
-  };
   "oscar-media-credentials.age" = {
     publicKeys = [ oscar ];
     armor = true;
