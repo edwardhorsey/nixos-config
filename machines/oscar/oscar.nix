@@ -40,6 +40,13 @@
     ];
   };
 
+  
+  fileSystems."/mnt/music" = {
+    device = "192.168.233.240:/mnt/JAS/docs/music";
+    fsType = "nfs";
+  };
+
+
   nixpkgs.config.allowUnfree = true;
 
   services.sabnzbd = {
