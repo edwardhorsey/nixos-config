@@ -25,6 +25,7 @@
   networking.hostName = "oscar";
 
   environment.systemPackages = with pkgs; [
+    beets
     cifs-utils
   ];
 

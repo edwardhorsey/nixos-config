@@ -33,6 +33,7 @@ Running in a Proxmox cluster, each named after a favorite DJ (see below)
 ### oscar
 |Icon|Name|Description|Category|
 |---|---|---|---|
+|<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/beets.svg' width=32 height=32>|Beets|Music library manager and tagger|Media|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/png/pinchflat.png' width=32 height=32>|Pinchflat|YouTube media manager|Downloads|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/prowlarr.svg' width=32 height=32>|Prowlarr|PVR indexer|Arr|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/sabnzbd.svg' width=32 height=32>|SABnzbd|The free and easy binary newsreader|Downloads|
