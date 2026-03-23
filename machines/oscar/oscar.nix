@@ -46,6 +46,12 @@
     fsType = "nfs";
   };
 
+  users.groups.nas-users = {
+    gid = 3000;
+  };
+
+  users.users.ned.extraGroups = lib.mkAfter [ "nas-users" ];
+
 
   nixpkgs.config.allowUnfree = true;
 
