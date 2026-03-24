@@ -25,10 +25,7 @@
   networking.hostName = "oscar";
 
   environment.systemPackages = with pkgs; [
-    (python3.withPackages (ps:  [
-      ps.beets
-      ps.beets-filetote
-    ]))
+    beets
     cifs-utils
   ];
 
