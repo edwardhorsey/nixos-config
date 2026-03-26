@@ -13,7 +13,6 @@
     ../../modules/ned-user.nix
   ];
 
-  age.secrets.oscar-media-credentials.file = ../../secrets/oscar-media-credentials.age;
   age.secrets."oscar-sabnzbd-config" = {
     file = ../../secrets/oscar-sabnzbd-config.age;
     owner = "ned";
@@ -30,14 +29,8 @@
   ];
 
   fileSystems."/mnt/jas" = {
-    device = "//192.168.233.240/media";
-    fsType = "cifs";
-    options = [
-      "credentials=${config.age.secrets.oscar-media-credentials.path}"
-      "uid=1000"
-      "gid=100"
-      "vers=3.0"
-    ];
+    device = "192.168.233.240:/mnt/JAS/media/media";
+    fsType = "nfs";
   };
 
   
@@ -58,7 +51,7 @@
   services.sabnzbd = {
     enable = true;
     user = "ned";
-    group = "users";
+    group = "nas-users";
     openFirewall = true;
     secretFiles = [
       config.age.secrets."oscar-sabnzbd-config".path
@@ -90,7 +83,7 @@
   services.pinchflat = {
     enable = true;
     user = "ned";
-    group = "users";
+    group = "nas-users";
     openFirewall = true;
     mediaDir = "/mnt/jas/pinchflat/downloads";
     selfhosted = true;
