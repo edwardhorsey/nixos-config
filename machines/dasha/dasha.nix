@@ -51,13 +51,6 @@
     };
   };
 
-  services.open-webui = {
-    enable = true;
-    host = "0.0.0.0";
-    port = 8080;
-    openFirewall = true;
-  };
-
   virtualisation.oci-containers.containers.baikal = {
     image = "ckulka/baikal:nginx";
     ports = [ "8002:80" ];
