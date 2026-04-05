@@ -36,6 +36,7 @@ Running in a Proxmox cluster, each named after a favorite DJ (see below)
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/png/pinchflat.png' width=32 height=32>|Pinchflat|YouTube media manager|Downloads|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/prowlarr.svg' width=32 height=32>|Prowlarr|PVR indexer|Arr|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/sabnzbd.svg' width=32 height=32>|SABnzbd|The free and easy binary newsreader|Downloads|
+|<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/slskd.svg' width=32 height=32>|Slskd|Client-server application for Soulseek|Downloads|
 
 
 ## How it works

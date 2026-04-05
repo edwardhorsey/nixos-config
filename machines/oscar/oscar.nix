@@ -19,6 +19,12 @@
     mode = "0400";
   };
 
+  age.secrets."oscar-slskd-config" = {
+    file = ../../secrets/oscar-slskd-config.age;
+    owner = "ned";
+    mode = "0400";
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "oscar";
@@ -33,7 +39,6 @@
     fsType = "nfs";
   };
 
-  
   fileSystems."/mnt/music" = {
     device = "192.168.233.240:/mnt/JAS/docs/music";
     fsType = "nfs";
@@ -44,7 +49,6 @@
   };
 
   users.users.ned.extraGroups = lib.mkAfter [ "nas-users" ];
-
 
   nixpkgs.config.allowUnfree = true;
 
@@ -72,6 +76,33 @@
         displayname = "Bulknews";
         name = "Bulknews";
       };
+    };
+  };
+
+  services.slskd = {
+    enable = true;
+    user = "ned";
+    group = "nas-users";
+    domain = null;
+    environmentFile = config.age.secrets."oscar-slskd-config".path;
+    settings = {
+      directories = {
+        downloads = "/mnt/jas/slskd/downloads";
+        incomplete = "/mnt/jas/slskd/incomplete";
+      };
+      shares = {
+        directories = [ "/mnt/jas/slskd/downloads" ];
+      };
+    };
+  };
+
+  systemd.services.slskd = {
+    unitConfig = {
+      RequiresMountsFor = [ "/mnt/jas" ];
+    };
+    serviceConfig = {
+      ReadOnlyPaths = lib.mkForce [ ];
+      ReadWritePaths = [ "/mnt/jas/slskd" "/mnt/jas/slskd/downloads" "/mnt/jas/slskd/incomplete" ];
     };
   };
 

@@ -11,4 +11,8 @@ in
     publicKeys = [ oscar ];
     armor = true;
   };
+  "slskd-config.age" = {
+    publicKeys = [ oscar ];
+    armor = true;
+  };
 }
