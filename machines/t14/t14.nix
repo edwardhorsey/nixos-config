@@ -58,6 +58,7 @@
     signal-desktop
     kdePackages.krdc
     flameshot
+    ghostty
   ];
 
   # Enable the OpenSSH daemon.
