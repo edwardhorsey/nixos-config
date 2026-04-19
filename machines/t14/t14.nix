@@ -17,7 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "bcachefs" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_19;
 
   networking.hostName = "t14";
   networking.networkmanager.enable = true;
