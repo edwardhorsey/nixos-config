@@ -59,6 +59,7 @@
     kdePackages.krdc
     flameshot
     ghostty
+    ente-auth
   ];
 
   # Enable the OpenSSH daemon.
