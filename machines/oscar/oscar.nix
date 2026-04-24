@@ -25,6 +25,11 @@
     mode = "0400";
   };
 
+  age.secrets."oscar-wireguard-config" = {
+    file = ../../secrets/oscar-wireguard-config.age;
+    mode = "0400";
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "oscar";
@@ -131,22 +136,14 @@
     ];
   };
 
-  services.openvpn.servers.proton = {
-    autoStart = true;
-    updateResolvConf = true;
-    config = ''
-      config /root/nixos/openvpn/proton.ovpn
-      auth-user-pass /root/nixos/openvpn/proton-auth.txt
-    '';
+  networking.wg-quick.interfaces.proton = {
+    configFile = config.age.secrets."oscar-wireguard-config".path;
   };
 
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 22 ]; # ssh
-    allowedUDPPorts = [
-      53
-      1194
-    ]; # dns and openvpn
+    allowedUDPPorts = [ 53 ]; # dns
 
     extraCommands = ''
       PHYS_IF="ens18"

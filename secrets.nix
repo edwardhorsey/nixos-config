@@ -15,4 +15,8 @@ in
     publicKeys = [ oscar ];
     armor = true;
   };
+  "oscar-wireguard-config.age" = {
+    publicKeys = [ oscar ];
+    armor = true;
+  };
 }
