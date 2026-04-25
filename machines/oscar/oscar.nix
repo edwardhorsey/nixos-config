@@ -13,14 +13,14 @@
     ../../modules/ned-user.nix
   ];
 
-  age.secrets."oscar-sabnzbd-config" = {
-    file = ../../secrets/oscar-sabnzbd-config.age;
+  age.secrets."oscar-slskd-config" = {
+    file = ../../secrets/oscar-slskd-config.age;
     owner = "ned";
     mode = "0400";
   };
 
-  age.secrets."oscar-slskd-config" = {
-    file = ../../secrets/oscar-slskd-config.age;
+  age.secrets."oscar-sabnzbd-config" = {
+    file = ../../secrets/oscar-sabnzbd-config.age;
     owner = "ned";
     mode = "0400";
   };
@@ -62,27 +62,80 @@
     user = "ned";
     group = "nas-users";
     openFirewall = true;
-    # secretFiles = [
-    #   config.age.secrets."oscar-sabnzbd-config".path
-    # ];
-    # settings = {
-    #   misc = {
-    #     host = "0.0.0.0";
-    #   };
-    #   servers."eweka" = {
-    #     enable = true;
-    #     host = "news.eweka.nl";
-    #     displayname = "Eweka";
-    #     name = "Eweka";
-    #   };
-    #   servers."bulknews" = {
-    #     enable = true;
-    #     host = "news.bulknews.eu";
-    #     displayname = "Bulknews";
-    #     name = "Bulknews";
-    #   };
-    # };
-    allowConfigWrite = true;
+    configFile = null;
+    allowConfigWrite = false;
+    secretFiles = [ config.age.secrets."oscar-sabnzbd-config".path ];
+    settings = {
+      misc = {
+        host = "0.0.0.0";
+        download_dir = "/mnt/jas/downloads/sabnzbd/incomplete";
+        complete_dir = "/mnt/jas/downloads/sabnzbd/complete";
+        host_whitelist = "usenet.watta.gdn";
+      };
+      servers."eweka" = {
+        enable = true;
+        host = "news.eweka.nl";
+        displayname = "Eweka";
+        name = "Eweka";
+        connections = 50;
+        priority = 1;
+      };
+      servers."bulknews" = {
+        enable = true;
+        host = "news.bulknews.eu";
+        displayname = "Bulknews";
+        name = "Bulknews";
+        connections = 30;
+        priority = 2;
+      };
+      categories = {
+        "*" = {
+          name = "*";
+          order = 0;
+          pp = 3;
+          script = "None";
+          dir = "";
+          newzbin = "";
+          priority = 0;
+        };
+        audio = {
+          name = "audio";
+          order = 3;
+          pp = "";
+          script = "Default";
+          dir = "";
+          newzbin = "";
+          priority = -100;
+        };
+        software = {
+          name = "software";
+          order = 4;
+          pp = "";
+          script = "Default";
+          dir = "";
+          newzbin = "";
+          priority = -100;
+        };
+        movies = {
+          name = "movies";
+          order = 1;
+          pp = "";
+          script = "Default";
+          dir = "/mnt/jas/films";
+          newzbin = "Movies*, movies*";
+          priority = -100;
+        };
+        tv = {
+          name = "tv";
+          order = 2;
+          pp = "";
+          script = "Default";
+          dir = "/mnt/jas/tv";
+          newzbin = "Tv*, tv*";
+          priority = -100;
+        };
+      };
+    };
   };
 
   services.slskd = {
