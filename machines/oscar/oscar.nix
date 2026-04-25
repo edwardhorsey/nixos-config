@@ -62,26 +62,27 @@
     user = "ned";
     group = "nas-users";
     openFirewall = true;
-    secretFiles = [
-      config.age.secrets."oscar-sabnzbd-config".path
-    ];
-    settings = {
-      misc = {
-        host = "0.0.0.0";
-      };
-      servers."eweka" = {
-        enable = true;
-        host = "news.eweka.nl";
-        displayname = "Eweka";
-        name = "Eweka";
-      };
-      servers."bulknews" = {
-        enable = true;
-        host = "news.bulknews.eu";
-        displayname = "Bulknews";
-        name = "Bulknews";
-      };
-    };
+    # secretFiles = [
+    #   config.age.secrets."oscar-sabnzbd-config".path
+    # ];
+    # settings = {
+    #   misc = {
+    #     host = "0.0.0.0";
+    #   };
+    #   servers."eweka" = {
+    #     enable = true;
+    #     host = "news.eweka.nl";
+    #     displayname = "Eweka";
+    #     name = "Eweka";
+    #   };
+    #   servers."bulknews" = {
+    #     enable = true;
+    #     host = "news.bulknews.eu";
+    #     displayname = "Bulknews";
+    #     name = "Bulknews";
+    #   };
+    # };
+    allowConfigWrite = true;
   };
 
   services.slskd = {
