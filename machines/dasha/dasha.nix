@@ -94,7 +94,7 @@
   };
 
   virtualisation.oci-containers.containers.gitea = {
-    image = "gitea/gitea:latest";
+    image = "gitea/gitea:1.26";
     ports = [
       "3000:3000"
       "222:22"
@@ -108,10 +108,11 @@
       USER_UID = "1000";
       USER_GID = "1000";
     };
+    extraOptions = [ "--pull=newer" ];
   };
 
   virtualisation.oci-containers.containers.netalertx = {
-    image = "ghcr.io/jokob-sk/netalertx:latest";
+    image = "ghcr.io/jokob-sk/netalertx:26.5";
     autoStart = true;
     volumes = [
       "netalertx_data:/data"
@@ -127,6 +128,7 @@
       NETALERTX_DEBUG = "0";
     };
     extraOptions = [
+      "--pull=newer"
       "--network=host"
       "--cap-drop=ALL"
       "--cap-add=NET_ADMIN"
@@ -140,7 +142,7 @@
   };
 
   virtualisation.oci-containers.containers.caddy = {
-    image = "serfriz/caddy-namecheap:latest";
+    image = "serfriz/caddy-namecheap:2.11";
     ports = [
       "80:80"
       "443:443"
@@ -152,6 +154,7 @@
       "/var/lib/container-data/caddy:/etc/caddy"
     ];
     extraOptions = [
+      "--pull=newer"
       "--name=caddy"
       "--cap-add=NET_ADMIN"
     ];
@@ -181,5 +184,4 @@
     22000
     21027
   ];
-
 }
