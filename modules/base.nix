@@ -9,7 +9,14 @@
   # Common settings shared by all hosts
   time.timeZone = "Europe/London";
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
+  };
 
   system.stateVersion = "25.05";
 
