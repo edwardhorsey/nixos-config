@@ -62,16 +62,8 @@
     ente-auth
   ];
 
-  # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    hostKeys = [
-      {
-        comment = "ned-t14";
-        path = "etc/ssh/ned-t14_key";
-        type = "ed25519";
-      }
-    ];
   };
 
   services.tailscale = {
