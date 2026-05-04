@@ -48,6 +48,7 @@
     settings = {
       HOST = "0.0.0.0";
       PORT = "3001";
+      HOME = "/var/lib/uptime-kuma";
     };
   };
 
