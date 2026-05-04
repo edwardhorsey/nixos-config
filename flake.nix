@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgsUnstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
   };
 
@@ -11,12 +10,11 @@
     {
       self,
       nixpkgs,
-      nixpkgsUnstable,
       agenix,
       ...
     }@inputs:
     {
-      nixosConfigurations.adriana = nixpkgsUnstable.lib.nixosSystem {
+      nixosConfigurations.adriana = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./machines/adriana/adriana.nix
@@ -24,14 +22,14 @@
         ];
       };
 
-      nixosConfigurations.dasha = nixpkgsUnstable.lib.nixosSystem {
+      nixosConfigurations.dasha = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./machines/dasha/dasha.nix
         ];
       };
 
-      nixosConfigurations.oscar = nixpkgsUnstable.lib.nixosSystem {
+      nixosConfigurations.oscar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./machines/oscar/oscar.nix
