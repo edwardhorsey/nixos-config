@@ -62,6 +62,10 @@
     ente-auth
   ];
 
+  services.gnome.gnome-keyring = {
+    enable = true;
+  };
+
   services.openssh = {
     enable = true;
   };
