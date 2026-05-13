@@ -60,6 +60,7 @@
     flameshot
     ghostty
     ente-auth
+    libreoffice
   ];
 
   services.gnome.gnome-keyring = {
