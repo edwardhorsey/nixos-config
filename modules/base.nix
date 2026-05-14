@@ -6,6 +6,8 @@
 }:
 
 {
+  imports = [ ./shared-vars.nix ];
+
   # Common settings shared by all hosts
   time.timeZone = "Europe/London";
 

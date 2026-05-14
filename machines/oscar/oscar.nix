@@ -40,12 +40,12 @@
   ];
 
   fileSystems."/mnt/jas" = {
-    device = "192.168.233.240:/mnt/JAS/media/media";
+    device = "${config.sharedVars.nasIp}:/mnt/JAS/media/media";
     fsType = "nfs";
   };
 
   fileSystems."/mnt/music" = {
-    device = "192.168.233.240:/mnt/JAS/docs/music";
+    device = "${config.sharedVars.nasIp}:/mnt/JAS/docs/music";
     fsType = "nfs";
   };
 
@@ -206,7 +206,7 @@
         "79.127.145.0/24"
       )
 
-      LOCAL_NET="192.168.233.0/24"
+      LOCAL_NET="${config.sharedVars.localNet}"
 
       # local network traffic
       iptables -A INPUT -s "$LOCAL_NET" -j ACCEPT

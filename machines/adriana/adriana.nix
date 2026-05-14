@@ -24,7 +24,7 @@
   ];
 
   fileSystems."/mnt/jas" = {
-    device = "//192.168.233.240/media";
+    device = "//${config.sharedVars.nasIp}/media";
     fsType = "cifs";
     options = [
       "credentials=${config.age.secrets.adriana-media-credentials.path}"
@@ -35,7 +35,7 @@
   };
 
   fileSystems."/mnt/photos" = {
-    device = "//192.168.233.240/photos";
+    device = "//${config.sharedVars.nasIp}/photos";
     fsType = "cifs";
     options = [
       "credentials=${config.age.secrets.adriana-media-credentials.path}"
