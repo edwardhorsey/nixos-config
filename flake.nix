@@ -1,5 +1,5 @@
 {
-  description = "nixos audiobookshelf machine";
+  description = "NixOS configurations for home infrastructure";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";

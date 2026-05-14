@@ -22,8 +22,6 @@
   networking.hostName = "t14";
   networking.networkmanager.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 

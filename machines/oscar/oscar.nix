@@ -55,8 +55,6 @@
 
   users.users.ned.extraGroups = lib.mkAfter [ "nas-users" ];
 
-  nixpkgs.config.allowUnfree = true;
-
   services.sabnzbd = {
     enable = true;
     user = "ned";
@@ -161,7 +159,11 @@
     };
     serviceConfig = {
       ReadOnlyPaths = lib.mkForce [ ];
-      ReadWritePaths = [ "/mnt/jas/slskd" "/mnt/jas/slskd/downloads" "/mnt/jas/slskd/incomplete" ];
+      ReadWritePaths = [
+        "/mnt/jas/slskd"
+        "/mnt/jas/slskd/downloads"
+        "/mnt/jas/slskd/incomplete"
+      ];
     };
   };
 

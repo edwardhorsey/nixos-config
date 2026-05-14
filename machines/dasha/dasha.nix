@@ -17,8 +17,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "dasha";
 
-  nixpkgs.config.allowUnfree = true;
-
   services.tailscale = {
     enable = true;
     extraDaemonFlags = [ "--no-logs-no-support" ];
