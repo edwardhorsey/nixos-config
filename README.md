@@ -48,8 +48,6 @@ Clone the repo to your home folder under `~/nix-config`.
 ### Rebuild
 
 ```bash
-cd  ~/nix-config
-
 sudo nixos-rebuild switch --flake .#adriana
 
 # or
@@ -77,11 +75,8 @@ Then enter the credentials information in Vim in the terminal. This will create 
 # Update flake
 sudo nix --extra-experimental-features 'nix-command flakes' flake update
 
-# Remove old packages and installations
+# Remove old packages and installations (use sudo to remove builds)
 nix-collect-garbage
-
-# Formatter
-find . -name '*.nix' -exec nixfmt -- {} +
 ```
 
 ## Links
