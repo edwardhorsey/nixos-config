@@ -61,6 +61,7 @@
     ghostty
     ente-auth
     libreoffice
+    opencode
   ];
 
   services.gnome.gnome-keyring = {
