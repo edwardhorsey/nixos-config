@@ -179,17 +179,6 @@
     selfhosted = true;
   };
 
-  services.openssh = {
-    enable = true;
-    hostKeys = [
-      {
-        type = "ed25519";
-        path = "/etc/ssh/ssh_host_ned_ed25519_key";
-        comment = "ned nixos oscar";
-      }
-    ];
-  };
-
   networking.wg-quick.interfaces.proton = {
     configFile = config.age.secrets."oscar-wireguard-config".path;
   };

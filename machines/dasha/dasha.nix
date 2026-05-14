@@ -19,17 +19,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  services.openssh = {
-    enable = true;
-    hostKeys = [
-      {
-        type = "ed25519";
-        path = "/etc/ssh/ssh_host_ned_ed25519_key";
-        comment = "ned@dasha";
-      }
-    ];
-  };
-
   services.tailscale = {
     enable = true;
     extraDaemonFlags = [ "--no-logs-no-support" ];
