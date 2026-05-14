@@ -15,7 +15,12 @@
       agenix,
       ...
     }@inputs:
+    let
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.linux;
+    in
     {
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
+
       nixosConfigurations.adriana = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
