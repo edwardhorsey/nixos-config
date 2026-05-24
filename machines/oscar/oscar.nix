@@ -30,6 +30,10 @@
     mode = "0400";
   };
 
+  age.identityPaths = [
+    "/etc/ssh/ssh_host_ned_ed25519_key"
+  ];
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "oscar";
@@ -69,6 +73,7 @@
         download_dir = "/mnt/jas/downloads/sabnzbd/incomplete";
         complete_dir = "/mnt/jas/downloads/sabnzbd/complete";
         host_whitelist = "usenet.watta.gdn";
+        config_lock = true;
       };
       servers."eweka" = {
         enable = true;
