@@ -36,6 +36,13 @@
         ];
       };
 
+      nixosConfigurations.donato = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./machines/donato/donato.nix
+        ];
+      };
+      
       nixosConfigurations.oscar = nixpkgsUnstable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
