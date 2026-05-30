@@ -132,6 +132,7 @@
   ];
 
   networking.firewall.allowedTCPPorts = [
+    222
     3001 # uptime kuma
     8384
     22000
