@@ -14,6 +14,9 @@
   ];
 
   age.secrets.adriana-media-credentials.file = ../../secrets/adriana-media-credentials.age;
+  age.identityPaths = [
+    "/etc/ssh/ssh_host_ned_ed25519_key"
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
