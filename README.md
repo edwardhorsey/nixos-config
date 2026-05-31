@@ -45,7 +45,7 @@ Running in a Proxmox cluster, each named after a favorite DJ (see below)
 
 ## How it works
 
-See [Create a NixOS VM on Proxmox](https://www.edwardhorsey.dev/blog/create-a-nixos-vm-on-proxmox/) post.
+See [Create a NixOS VM on Proxmox](https://www.edwardhorsey.net/blog/create-a-nixos-vm-on-proxmox/) post.
 
 Clone the repo to your home folder under `~/nix-config`.
 
