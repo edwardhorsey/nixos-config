@@ -46,7 +46,13 @@
     };
   };
   programs.thunderbird.enable = true;
-  programs.tmux.enable = true;
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      set -g mouse on
+    '';
+  };
+  programs.direnv.enable = true;
 
   environment.systemPackages = with pkgs; [
     cifs-utils
