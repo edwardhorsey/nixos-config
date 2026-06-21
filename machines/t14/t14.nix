@@ -67,6 +67,7 @@
     ente-auth
     libreoffice
     opencode
+    freetube
   ];
 
   services.gnome.gnome-keyring = {
