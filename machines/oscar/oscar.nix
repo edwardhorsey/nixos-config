@@ -153,7 +153,10 @@
         incomplete = "/mnt/jas/slskd/incomplete";
       };
       shares = {
-        directories = [ "/mnt/jas/slskd/downloads" ];
+        directories = [ 
+          "/mnt/jas/slskd/downloads"
+          "/mnt/music/music-library"
+        ];
       };
     };
   };
