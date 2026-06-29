@@ -34,6 +34,12 @@
     };
   };
 
+  services.beszel.hub = {
+    enable = true;
+    host = "0.0.0.0";
+    port = 8090;
+  };
+
   virtualisation.oci-containers.containers.baikal = {
     image = "ckulka/baikal:nginx";
     ports = [ "8002:80" ];
@@ -134,6 +140,7 @@
   networking.firewall.allowedTCPPorts = [
     3001 # uptime kuma
     8384
+    8090 # beszel hub
     22000
     20211 # netalertx
     20212 # netalertx graphql
