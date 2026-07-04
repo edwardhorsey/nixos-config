@@ -52,7 +52,7 @@ Clone the repo to your home folder under `~/nix-config`.
 ### Rebuild
 
 ```bash
-sudo nixos-rebuild switch --flake .#adriana
+sudo nixos-rebuild switch --flake path:.#adriana
 
 # or
 
@@ -64,7 +64,7 @@ sudo nixos-rebuild switch --flake .#donato
 
 # or
 
-sudo nixos-rebuild switch --flake .#oscar
+sudo nixos-rebuild switch --flake path:.#oscar
 ```
 
 ### Create secrets file

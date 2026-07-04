@@ -6,8 +6,6 @@
 }:
 
 {
-  imports = [ ./shared-vars.nix ];
-
   nixpkgs.config.allowUnfree = true;
 
   # Common settings shared by all hosts

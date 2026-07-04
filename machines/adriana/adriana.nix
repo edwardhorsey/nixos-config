@@ -8,6 +8,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./local.nix
     ../../modules/base.nix
     ../../modules/zsh.nix
     ../../modules/ned-user.nix

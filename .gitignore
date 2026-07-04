@@ -1,0 +1,6 @@
+# Per-machine private configuration files
+machines/*/local.nix
+
+# Nix build artifacts
+result
+result-*

@@ -8,6 +8,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./local.nix
     ../../modules/base.nix
     ../../modules/zsh.nix
     ../../modules/ned-user.nix
@@ -153,7 +154,7 @@
         incomplete = "/mnt/jas/slskd/incomplete";
       };
       shares = {
-        directories = [ 
+        directories = [
           "/mnt/jas/slskd/downloads"
           "/mnt/music/music-library"
         ];
