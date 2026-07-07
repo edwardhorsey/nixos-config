@@ -30,12 +30,12 @@
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NIXOS-ENCRYPTED";
 
   fileSystems."/" = {
-    device = "UUID=80885891-b708-42b6-aaf1-a045ec4bdeb2";
+    device = "/dev/disk/by-label/NIXOS-ROOT";
     fsType = "bcachefs";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/3498-5D0F";
+    device = "/dev/disk/by-label/NIXOS-BOOT";
     fsType = "vfat";
     options = [
       "fmask=0022"
@@ -43,7 +43,7 @@
     ];
   };
 
-  swapDevices = [ { device = "/dev/disk/by-uuid/0690ef9b-ac1d-4b97-8320-e897dfceb29e"; } ];
+  swapDevices = [ { device = "/dev/disk/by-label/NIXOS-SWAP"; } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
