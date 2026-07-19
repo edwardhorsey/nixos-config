@@ -206,11 +206,15 @@
         "79.127.145.0/24"
       )
 
-      LOCAL_NET="${config.sharedVars.localNet}"
+      LOCAL_NETS=(
+        ${lib.concatStringsSep "\n    " (map (net: "\"${net}\"") config.sharedVars.localNets)}
+      )
 
       # local network traffic
-      iptables -A INPUT -s "$LOCAL_NET" -j ACCEPT
-      iptables -A OUTPUT -d "$LOCAL_NET" -j ACCEPT
+      for net in "''${LOCAL_NETS[@]}"; do
+        iptables -A INPUT -s "$net" -j ACCEPT
+        iptables -A OUTPUT -d "$net" -j ACCEPT
+      done
 
       # traffic to/from ProtonVPN servers
       for range in "''${VPN_SERVER_RANGES[@]}"; do
