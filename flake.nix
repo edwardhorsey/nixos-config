@@ -33,6 +33,7 @@
         system = "x86_64-linux";
         modules = [
           ./machines/dasha/dasha.nix
+          agenix.nixosModules.default
         ];
       };
 

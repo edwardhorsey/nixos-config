@@ -17,6 +17,16 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "dasha";
 
+  age.secrets."dasha-searxng-secret" = {
+    file = ../../secrets/dasha-searxng-secret.age;
+    owner = "searx";
+    mode = "0400";
+  };
+
+  age.identityPaths = [
+    "/etc/ssh/ssh_host_ned_ed25519_key"
+  ];
+
   services.syncthing = {
     enable = true;
     user = "ned";
@@ -106,6 +116,7 @@
     settings.server = {
       bind_address = "0.0.0.0";
       port = 8888;
+      secret_key = config.age.secrets."dasha-searxng-secret".path;
     };
   };
 
