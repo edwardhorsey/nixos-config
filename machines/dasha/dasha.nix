@@ -8,6 +8,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./local.nix
     ../../modules/base.nix
     ../../modules/zsh.nix
     ../../modules/ned-user.nix
@@ -117,6 +118,17 @@
       bind_address = "0.0.0.0";
       port = 8888;
       secret_key = config.age.secrets."dasha-searxng-secret".path;
+    };
+    limiterSettings = {
+      botdetection = {
+        ip_limit = {
+          filter_link_local = true;
+          link_token = true;
+        };
+        ip_lists = {
+          pass_ip = [ config.sharedVars.localNet ];
+        };
+      };
     };
   };
 
