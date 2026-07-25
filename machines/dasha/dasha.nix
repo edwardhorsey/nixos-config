@@ -119,11 +119,14 @@
       port = 8888;
       secret_key = config.age.secrets."dasha-searxng-secret".path;
     };
+    settings.search = {
+      formats = [ "html" "json" ]; 
+    };
     limiterSettings = {
       botdetection = {
         ip_limit = {
-          filter_link_local = true;
-          link_token = true;
+          filter_link_local = false;
+          link_token = false;
         };
         ip_lists = {
           pass_ip = [ config.sharedVars.localNet ];
