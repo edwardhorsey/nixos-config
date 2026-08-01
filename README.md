@@ -21,7 +21,8 @@ Running in a Proxmox cluster, each named after a favorite DJ (see below)
 ### dasha
 |Icon|Name|Description|Category|
 |---|---|---|---|
-|<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/png/baikal.png' width=32 height=32>|Baikal|CalDAV and CardDAV server|Services|
+|<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/baikal.svg' width=32 height=32>|Baikal|CalDAV and CardDAV server|Services|
+|<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/beszel.svg' width=32 height=32>|Beszel|Lightweight server monitoring|Services|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/gitea.svg' width=32 height=32>|Gitea|Self hosted Git service|Services|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/searxng.svg' width=32 height=32>|SearXNG|Privacy-respecting metasearch engine|Services|
 |<img src='https://cdn.jsdelivr.net/gh/selfhst/icons/svg/syncthing.svg' width=32 height=32>|Syncthing|Open source continuous file synchronization|Services|
@@ -56,7 +57,7 @@ sudo nixos-rebuild switch --flake path:.#adriana
 
 # or
 
-sudo nixos-rebuild switch --flake .#dasha
+sudo nixos-rebuild switch --flake path:.#dasha
 
 # or
 
