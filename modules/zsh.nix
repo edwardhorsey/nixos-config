@@ -11,8 +11,8 @@
       mv = "mv -i";
       rm = "rm -i";
       ll = "ls -la";
-      localip = "ip -4 addr show | awk '/inet / {print $2}' | cut -d/ -f1";
-      publicip = "curl ifconfig.co/json";
+      localip = "ip -o addr show scope global | awk '{split($4, a, \"/\"); printf \"%-14s %s\\n\", $2, a[1]}'";
+      publicip = "echo -n 'v4: '; curl -4 -s ifconfig.co; echo -n 'v6: '; curl -6 -s ifconfig.co || echo unavailable";
       gp = "git pull";
       gs = "git status";
     };
