@@ -120,7 +120,10 @@
       secret_key = config.age.secrets."dasha-searxng-secret".path;
     };
     settings.search = {
-      formats = [ "html" "json" ]; 
+      formats = [
+        "html"
+        "json"
+      ];
     };
     limiterSettings = {
       botdetection = {
