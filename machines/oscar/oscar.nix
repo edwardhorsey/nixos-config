@@ -75,6 +75,12 @@
         complete_dir = "/mnt/jas/downloads/sabnzbd/complete";
         host_whitelist = "usenet.watta.gdn";
         config_lock = true;
+        # nixpkgs pins this to 4, but sabnzbd 5.x has 5 config conversions.
+        # Without this, conversion 5 runs at every start, marks the read-only
+        # config dirty and reports "Configuration locked, cannot save settings".
+        config_conversion_version = 5;
+        direct_unpack_tested = true;
+        fixed_ports = true;
       };
       servers."eweka" = {
         enable = true;
@@ -83,6 +89,7 @@
         name = "Eweka";
         connections = 50;
         priority = 1;
+        expire_date = "";
       };
       servers."bulknews" = {
         enable = true;
@@ -91,6 +98,7 @@
         name = "Bulknews";
         connections = 30;
         priority = 2;
+        expire_date = "";
       };
       categories = {
         "*" = {
