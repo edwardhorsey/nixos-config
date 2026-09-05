@@ -119,6 +119,24 @@
       port = 8888;
       secret_key = config.age.secrets."dasha-searxng-secret".path;
     };
+    settings.engines = [
+      {
+        name = "bing";
+        disabled = false;
+      }
+      {
+        name = "qwant";
+        disabled = false;
+      }
+      {
+        name = "startpage";
+        disabled = false;
+      }
+      {
+        name = "mojeek";
+        disabled = false;
+      }
+    ];
     settings.search = {
       formats = [
         "html"
