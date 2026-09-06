@@ -23,6 +23,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "adriana";
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "immich-2.7.5"
+  ];
+
   environment.systemPackages = with pkgs; [
     cifs-utils
   ];
