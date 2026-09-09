@@ -123,21 +123,61 @@
       {
         name = "bing";
         disabled = false;
-      }
-      {
-        name = "qwant";
-        disabled = false;
-      }
-      {
-        name = "startpage";
-        disabled = false;
+        timeout = 5;
       }
       {
         name = "mojeek";
         disabled = false;
+        timeout = 5;
+      }
+      {
+        name = "duckduckgo";
+        disabled = true;
+      }
+      {
+        name = "brave";
+        disabled = true;
+      }
+      {
+        name = "startpage";
+        disabled = true;
+      }
+      {
+        name = "qwant";
+        disabled = true;
+      }
+      {
+        name = "google";
+        disabled = true;
+      }
+      {
+        name = "bing images";
+        disabled = true;
+      }
+      {
+        name = "bing videos";
+        disabled = true;
+      }
+      {
+        name = "brave.images";
+        disabled = true;
+      }
+      {
+        name = "brave.videos";
+        disabled = true;
+      }
+      {
+        name = "google images";
+        disabled = true;
+      }
+      {
+        name = "google videos";
+        disabled = true;
       }
     ];
     settings.search = {
+      default_lang = "en-GB";
+      safe_search = 1;
       formats = [
         "html"
         "json"
