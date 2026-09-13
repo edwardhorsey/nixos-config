@@ -53,6 +53,8 @@ All hosts target `x86_64-linux`.
 
 Run commands from the repository root.
 
+The machine editing this repository may or may not have Nix installed or a `/nix/store`. Check the available tooling before running Nix commands. If Nix is unavailable, do not assume store paths exist; perform repository-level checks that are available and report the Nix formatting, evaluation, or build commands that still need to be run on a Nix-capable machine.
+
 1. Inspect the relevant host and shared modules before editing.
 2. Format changed Nix files with `nix fmt`.
 3. Evaluate the flake with:
