@@ -38,6 +38,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "oscar";
+  networking.dhcpcd.wait = "ipv4";
 
   environment.systemPackages = with pkgs; [
     beets
@@ -150,6 +151,8 @@
     };
   };
 
+  systemd.services.sabnzbd.unitConfig.RequiresMountsFor = [ "/mnt/jas" ];
+
   services.slskd = {
     enable = true;
     user = "ned";
@@ -172,7 +175,10 @@
 
   systemd.services.slskd = {
     unitConfig = {
-      RequiresMountsFor = [ "/mnt/jas" ];
+      RequiresMountsFor = [
+        "/mnt/jas"
+        "/mnt/music"
+      ];
     };
     serviceConfig = {
       ReadOnlyPaths = lib.mkForce [ ];
@@ -197,6 +203,8 @@
     mediaDir = "/mnt/jas/pinchflat/downloads";
     selfhosted = true;
   };
+
+  systemd.services.pinchflat.unitConfig.RequiresMountsFor = [ "/mnt/jas" ];
 
   networking.wg-quick.interfaces.proton = {
     configFile = config.age.secrets."oscar-wireguard-config".path;
