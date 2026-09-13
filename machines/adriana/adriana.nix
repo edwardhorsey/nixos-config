@@ -60,6 +60,8 @@
     openFirewall = true;
   };
 
+  systemd.services.audiobookshelf.unitConfig.RequiresMountsFor = [ "/mnt/jas" ];
+
   services.immich = {
     enable = true;
     host = "0.0.0.0";
@@ -67,4 +69,5 @@
     openFirewall = true;
   };
 
+  systemd.services.immich-server.unitConfig.RequiresMountsFor = [ "/mnt/photos" ];
 }
