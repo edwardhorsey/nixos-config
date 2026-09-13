@@ -22,6 +22,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "adriana";
+  networking.dhcpcd.wait = "ipv4";
 
   nixpkgs.config.permittedInsecurePackages = [
     "immich-2.7.5"
