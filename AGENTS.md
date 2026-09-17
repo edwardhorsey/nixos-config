@@ -22,7 +22,7 @@ These instructions apply to the whole repository. If a more specific `AGENTS.md`
 All hosts target `x86_64-linux`.
 
 - `adriana`: Audiobookshelf and Immich; uses a private `local.nix` and agenix.
-- `dasha`: Syncthing, Uptime Kuma, Beszel, Baikal, Gitea, and SearXNG; uses a private `local.nix` and agenix.
+- `dasha`: Syncthing, Uptime Kuma, Beszel, Baikal, FreshRSS, Gitea, and SearXNG; uses a private `local.nix` and agenix.
 - `donato`: Caddy and Tailscale; no ignored `local.nix` import.
 - `oscar`: media and download services, NAS mounts, and WireGuard; uses a private `local.nix` and agenix. It follows `nixpkgs-unstable`.
 - `t14`: desktop/laptop configuration with Cosmic, desktop applications, Tailscale, and Syncthing.
@@ -47,7 +47,10 @@ All hosts target `x86_64-linux`.
 - Keep agenix identity paths as runtime string paths. Do not use a Nix path for an SSH private key, because it can copy the key into the Nix store.
 - Treat changes to SSH access, firewall rules, mounts, VPN routing, boot loaders, and service bind addresses as high risk. Explain operational impact before applying them.
 - Do not deploy or apply configurations to any host. The user performs all deployments.
+- Do not attempt host builds for verification or any other reason unless the user explicitly requests one. All host builds and deployments are performed by the user by default.
 - Do not run `nixos-rebuild switch`, reboot, delete generations, or garbage-collect on a host, even while validating a change.
+- Except for formatting changed files as described below, do not run commands that evaluate a host configuration, build or realize derivations, enter development shells, run packages through Nix, update lock files, deploy configurations, contact remote hosts, or mutate running system or container state unless the user explicitly requests that exact action. This includes `nix build`, `nix flake check`, host-oriented `nix eval`, `nix run`, `nix shell`, `nix develop`, all `nixos-rebuild` modes, and remote or service-management commands. Providing a command for the user to run is not permission to execute it.
+- Read-only Nix commands may be used to research packages, versions, metadata, option definitions, and existing store paths. This includes `nix search`, package-scoped `nix eval`, `nix path-info`, and `nix-store --query`. Do not use this exception to evaluate a host configuration or realize a derivation.
 
 ## Verification Workflow
 
@@ -56,20 +59,20 @@ Run commands from the repository root.
 The machine editing this repository may or may not have Nix installed or a `/nix/store`. Check the available tooling before running Nix commands. If Nix is unavailable, do not assume store paths exist; perform repository-level checks that are available and report the Nix formatting, evaluation, or build commands that still need to be run on a Nix-capable machine.
 
 1. Inspect the relevant host and shared modules before editing.
-2. Format changed Nix files with `nix fmt`.
-3. Evaluate the flake with:
+2. Format changed Nix files by passing their paths explicitly:
+
+   ```bash
+   nix fmt path/to/changed-file.nix path/to/another-changed-file.nix
+   ```
+
+   Do not invoke bare `nix fmt` in this repository. With the pinned `nixfmt` version, the flake formatter receives empty standard input and fails with `unexpected end of input`; explicit file paths avoid this issue.
+3. Evaluate the flake only when the user explicitly requests it:
 
    ```bash
    nix flake check
    ```
 
-4. For a focused host evaluation, use:
-
-   ```bash
-   nix build .#nixosConfigurations.<host>.config.system.build.toplevel
-   ```
-
-   Building a host may require the host's ignored `local.nix`; report that limitation rather than creating a guessed file.
+4. Do not build a host unless the user explicitly asks for a host build. If evaluation requires an ignored `local.nix` that is unavailable, report that limitation rather than creating a guessed file or attempting a substitute host build.
 5. Review `git diff` and `git status`. Confirm that only intended files changed and that no plaintext secret or `result` link is included.
 
 Deployment commands are documented for the user's reference only. Agents must not run `nixos-rebuild switch`, `--target-host`, or other deployment commands. This repository does not define a deployment tool or a CI pipeline.
