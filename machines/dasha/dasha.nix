@@ -24,6 +24,12 @@
     mode = "0400";
   };
 
+  age.secrets."dasha-freshrss-password" = {
+    file = ../../secrets/dasha-freshrss-password.age;
+    owner = "freshrss";
+    mode = "0400";
+  };
+
   age.identityPaths = [
     "/etc/ssh/ssh_host_ned_ed25519_key"
   ];
@@ -50,6 +56,21 @@
     host = "0.0.0.0";
     port = 8090;
   };
+
+  services.freshrss = {
+    enable = true;
+    virtualHost = "rss.watta.gdn";
+    baseUrl = "https://rss.watta.gdn";
+    defaultUser = "ned";
+    passwordFile = config.age.secrets."dasha-freshrss-password".path;
+  };
+
+  services.nginx.virtualHosts."rss.watta.gdn".listen = [
+    {
+      addr = "0.0.0.0";
+      port = 8081;
+    }
+  ];
 
   virtualisation.oci-containers.containers.baikal = {
     image = "ckulka/baikal:nginx";
@@ -205,6 +226,7 @@
 
   networking.firewall.allowedTCPPorts = [
     3001 # uptime kuma
+    8081 # freshrss
     8384
     8090 # beszel hub
     22000

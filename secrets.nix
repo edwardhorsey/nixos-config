@@ -12,6 +12,10 @@ in
     publicKeys = [ dasha ];
     armor = true;
   };
+  "dasha-freshrss-password.age" = {
+    publicKeys = [ dasha ];
+    armor = true;
+  };
   "oscar-sabnzbd-config.age" = {
     publicKeys = [ oscar ];
     armor = true;
