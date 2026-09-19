@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -8,7 +7,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./local.nix
     ../../modules/base.nix
     ../../modules/zsh.nix
     ../../modules/ned-user.nix
@@ -17,12 +15,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "dasha";
-
-  age.secrets."dasha-searxng-secret" = {
-    file = ../../secrets/dasha-searxng-secret.age;
-    owner = "searx";
-    mode = "0400";
-  };
 
   age.secrets."dasha-freshrss-password" = {
     file = ../../secrets/dasha-freshrss-password.age;
@@ -132,91 +124,6 @@
     extraOptions = [ "--pull=newer" ];
   };
 
-  services.searx = {
-    enable = true;
-    redisCreateLocally = true;
-    settings.server = {
-      bind_address = "0.0.0.0";
-      port = 8888;
-      secret_key = config.age.secrets."dasha-searxng-secret".path;
-    };
-    settings.engines = [
-      {
-        name = "bing";
-        disabled = false;
-        timeout = 5;
-      }
-      {
-        name = "mojeek";
-        disabled = false;
-        timeout = 5;
-      }
-      {
-        name = "duckduckgo";
-        disabled = true;
-      }
-      {
-        name = "brave";
-        disabled = true;
-      }
-      {
-        name = "startpage";
-        disabled = true;
-      }
-      {
-        name = "qwant";
-        disabled = true;
-      }
-      {
-        name = "google";
-        disabled = true;
-      }
-      {
-        name = "bing images";
-        disabled = true;
-      }
-      {
-        name = "bing videos";
-        disabled = true;
-      }
-      {
-        name = "brave.images";
-        disabled = true;
-      }
-      {
-        name = "brave.videos";
-        disabled = true;
-      }
-      {
-        name = "google images";
-        disabled = true;
-      }
-      {
-        name = "google videos";
-        disabled = true;
-      }
-    ];
-    settings.search = {
-      default_lang = "en-GB";
-      safe_search = 1;
-      formats = [
-        "html"
-        "json"
-      ];
-    };
-    limiterSettings = {
-      botdetection = {
-        ip_limit = {
-          filter_link_local = false;
-          link_token = false;
-        };
-        ip_lists = {
-          pass_ip = [ config.sharedVars.localNet ];
-        };
-      };
-    };
-  };
-
   # Will throw if the dirs don't exist
   systemd.tmpfiles.rules = [
     "d /var/lib/container-data/baikal/config 0755 root root -"
@@ -230,7 +137,6 @@
     8384
     8090 # beszel hub
     22000
-    8888 # searxng
   ];
 
   networking.firewall.allowedUDPPorts = [

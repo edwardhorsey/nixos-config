@@ -8,10 +8,6 @@ in
     publicKeys = [ adriana ];
     armor = true;
   };
-  "secrets/dasha-searxng-secret.age" = {
-    publicKeys = [ dasha ];
-    armor = true;
-  };
   "secrets/dasha-freshrss-password.age" = {
     publicKeys = [ dasha ];
     armor = true;

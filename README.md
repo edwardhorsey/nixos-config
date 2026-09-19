@@ -16,7 +16,7 @@ The VM hosts run in a Proxmox cluster. They are all named DJs.
 | Host | Role | Nixpkgs channel |
 | --- | --- | --- |
 | `adriana` | Audiobookshelf and Immich | Stable |
-| `dasha` | Syncthing, Uptime Kuma, Beszel, Baikal, FreshRSS, Gitea, and SearXNG | Stable |
+| `dasha` | Syncthing, Uptime Kuma, Beszel, Baikal, FreshRSS, and Gitea | Stable |
 | `donato` | Caddy and Tailscale | Stable |
 | `oscar` | Media and download services, NAS mounts, and WireGuard | Unstable |
 | `t14` | Desktop/laptop configuration with Cosmic, applications, Tailscale, and Syncthing | Stable |
@@ -38,7 +38,6 @@ The VM hosts run in a Proxmox cluster. They are all named DJs.
 | <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/beszel.svg" width="32" height="32" alt="Beszel"> | Beszel | Lightweight server monitoring | Services |
 | <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/freshrss.svg" width="32" height="32" alt="FreshRSS"> | FreshRSS | Self-hosted RSS and Atom feed aggregator | Services |
 | <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/gitea.svg" width="32" height="32" alt="Gitea"> | Gitea | Self-hosted Git service | Services |
-| <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/searxng.svg" width="32" height="32" alt="SearXNG"> | SearXNG | Privacy-respecting metasearch engine | Services |
 | <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/syncthing.svg" width="32" height="32" alt="Syncthing"> | Syncthing | Continuous file synchronization | Services |
 | <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/uptime-kuma.svg" width="32" height="32" alt="Uptime Kuma"> | Uptime Kuma | Service monitoring tool | Services |
 
