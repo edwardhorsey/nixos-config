@@ -4,27 +4,27 @@ let
   oscar = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwcElnf3G0KA6mLuhPg2iyUWLKv5UT+xEgDy6b9aRdH";
 in
 {
-  "adriana-media-credentials.age" = {
+  "secrets/adriana-media-credentials.age" = {
     publicKeys = [ adriana ];
     armor = true;
   };
-  "dasha-searxng-secret.age" = {
+  "secrets/dasha-searxng-secret.age" = {
     publicKeys = [ dasha ];
     armor = true;
   };
-  "dasha-freshrss-password.age" = {
+  "secrets/dasha-freshrss-password.age" = {
     publicKeys = [ dasha ];
     armor = true;
   };
-  "oscar-sabnzbd-config.age" = {
+  "secrets/oscar-sabnzbd-config.age" = {
     publicKeys = [ oscar ];
     armor = true;
   };
-  "slskd-config.age" = {
+  "secrets/oscar-slskd-config.age" = {
     publicKeys = [ oscar ];
     armor = true;
   };
-  "oscar-wireguard-config.age" = {
+  "secrets/oscar-wireguard-config.age" = {
     publicKeys = [ oscar ];
     armor = true;
   };
