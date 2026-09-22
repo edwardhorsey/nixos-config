@@ -210,7 +210,10 @@ in
       dasha-backup-restore-test = {
         description = "Restore and validate the latest Dasha backup";
         unitConfig.RequiresMountsFor = [ mountPoint ];
-        environment.RESTIC_PASSWORD_FILE = resticPasswordFile;
+        environment = {
+          RESTIC_CACHE_DIR = "/var/cache/dasha-restic-restore-test";
+          RESTIC_PASSWORD_FILE = resticPasswordFile;
+        };
         path = [
           pkgs.coreutils
           pkgs.jq
@@ -218,6 +221,8 @@ in
         ];
         serviceConfig = {
           Type = "oneshot";
+          CacheDirectory = "dasha-restic-restore-test";
+          CacheDirectoryMode = "0700";
           StateDirectory = "dasha-restic-restore-test";
           StateDirectoryMode = "0700";
           TimeoutStartSec = "2h";
