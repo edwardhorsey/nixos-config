@@ -68,6 +68,7 @@
     libreoffice
     opencode
     freetube
+    ut1999
   ];
 
   services.gnome.gnome-keyring = {
