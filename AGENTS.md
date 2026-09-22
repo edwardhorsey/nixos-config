@@ -22,7 +22,7 @@ These instructions apply to the whole repository. If a more specific `AGENTS.md`
 All hosts target `x86_64-linux`.
 
 - `adriana`: Audiobookshelf and Immich; uses a private `local.nix` and agenix.
-- `dasha`: Syncthing, Uptime Kuma, Beszel, Baikal, FreshRSS, and Gitea; uses agenix.
+- `dasha`: Syncthing, Uptime Kuma, Beszel, Baikal, FreshRSS, Gitea, and Restic backups; uses a private `local.nix` and agenix.
 - `donato`: Caddy and Tailscale; no ignored `local.nix` import.
 - `oscar`: media and download services, NAS mounts, and WireGuard; uses a private `local.nix` and agenix. It follows `nixpkgs-unstable`.
 - `t14`: desktop/laptop configuration with Cosmic, desktop applications, Tailscale, and Syncthing.

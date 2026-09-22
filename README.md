@@ -98,6 +98,12 @@ EDITOR=vim nix run github:ryantm/agenix -- -e <secret-name>.age
 ```
 Secret creation, rekeying, and identity management are intentionally manual operations.
 
+## Backups
+
+Dasha backs up application state daily to an encrypted Restic repository on a
+TrueNAS NFS dataset. See [`docs/dasha-backups.md`](docs/dasha-backups.md) for
+prerequisites, schedules, verification, and restore procedures.
+
 ## Useful Commands
 
 Check and format the flake:
